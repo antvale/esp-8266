@@ -1,1 +1,12 @@
-# ESP8266 simple projects
+# Programming ESP-01 (ESP8266) made easy
+
+You have probably heard about IoT (Internet of Things), a world of little useful things that interacting with the surrounding environment are able to communicate each other and sometimes with the human beings. The popular ESP8266 along with the modules of ESP-XX family find a right place in the IoT world due to their smaller size and cheaper cost compared to other similar board like Arduino. So if you want to learn how to program this amazing micro-controller, then...good reading. 
+
+This post focuses on setting up a simple development environment to program the ESP-01 module. Indeed, this module does not include  any micro-usb connector out-of-box requiring instead to add  few additional components to program it. On the market there are also some development boards, like NodeMCU for example which includes all the necessary built directly in the module as well as a micro-usb connector to easily connect the board to laptop. But typically these boards are larger than ESP-01 and can't be plugged in already existing modules built around the ESP-01 such as the relay modules used in the home automation domain.
+
+Thus, to develop with ESP-01 module without having to do a complicated breakout board or a breadboard with many flying jumpers then you need at least the following bill of materials: ESP-01 (obviously), an USB-to-UART bridge, a 3.3 volt power regulator, a resistor, a SDK and an IoT platform. Obviously several options exist for each above components, in this post I've chosen a programmer adapter based on CH340 chipset, Arduino IDE as language and Blynk as IoT Platform.
+
+What is ESP-01?
+ESP-01 is a small module that integrates the MCU (Micro-Controller  Unit) ESP8266EX sold by Espressif, a Chinese company. The ESP8266EX is built on top of the Tensilica L106 32-bit risc processor and a 2.4GHz WiFi radio making easy and fast to connect this device over internet and in general with the cloud. In addition to internal RAM to run the program instructions, the module integrates also a SPI flash memory where storing the program code. The ESP version used in this post hosts a maximum of 1MB external flash memory based on P25Q80H  SPI flash.
+ESP-01 6-pins board shows clearly the MCU, the SPI flash memory and the antenna. The size of this device is 2.427x1.45cm making it an ideal option to build amazing IoT prototyping. When powering this device remember to use 3.3 volts, and not 5 volts as per Arduino. Don't forget this constraint if you don't want to burn anything on the board.
+![image](https://user-images.githubusercontent.com/21111325/139257636-45832c84-ad6d-48c6-b1f5-7987757673ae.png)
