@@ -8,7 +8,7 @@ Thus, to develop with ESP-01 module without having to do a complicated breakout 
 
 ## What is ESP-01?
 
-ESP-01 is a small module that integrates the MCU (Micro-Controller  Unit) ESP8266EX sold by [Espressif](https://www.espressif.com/) , a Chinese company. The [ESP8266EX](https://www.espressif.com/sites/default/files/documentation/0a-esp8266ex_datasheet_en.pdf) is built on top of the Tensilica L106 32-bit risc processor and a 2.4GHz WiFi radio making easy and fast to connect this device over internet and in general with the cloud. In addition to internal RAM to run the program instructions, the module integrates also a SPI flash memory where storing the program code. The ESP version used in this post hosts a maximum of 1MB external flash memory based on **P25Q80H** SPI flash.
+ESP-01 is a small module that integrates the MCU (Micro-Controller  Unit) ESP8266EX sold by [Espressif](https://www.espressif.com/), a Chinese company. The [ESP8266EX](https://www.espressif.com/sites/default/files/documentation/0a-esp8266ex_datasheet_en.pdf) is built on top of the Tensilica L106 32-bit risc processor and a 2.4GHz WiFi radio making easy and fast to connect this device over internet and in general with the cloud. In addition to internal RAM to run the program instructions, the module integrates also a SPI flash memory where storing the program code. The ESP version used in this post hosts a maximum of 1MB external flash memory based on **P25Q80H** SPI flash.
 
 ESP-01 6-pins board shows clearly the MCU, the SPI flash memory and the antenna. The size of this device is 2.427x1.45cm making it an ideal option to build amazing IoT prototyping. When powering this device remember to use 3.3 volts, and not 5 volts as per Arduino. Don't forget this constraint if you don't want to burn anything on the board.
 
@@ -68,7 +68,7 @@ Some options exist to program the ESP-01 like [Mongoose OS](https://mongoose-os.
 
 ## Install Blynk library in Arduino IDE
 
-Blynk is an IoT platform that provides features to create and manage Android and iOS apps to control remotely several type of devices as the ESP8266. Make an app with this platform is really ease and generally requires three main steps: 
+Blynk is an IoT platform that provides features to create and manage Android and iOS apps to control remotely several type of devices as the ESP8266. Make an app with this platform is really ease and generally requires three main steps:
 
 - Install Blynk app on your smartphone
 - Create an app with the widgets provided by Blynk
@@ -109,6 +109,7 @@ Configure properly the wifi access entering ssid and password to connect to your
 - Compile the sketch
 - Reset the ESP-01 using a jumper between the RST and GND pins on the board. Alternatively you can solder a small push button on the adapter to reset when required
 - Upload the code to ESP-01 module (using upload icon). Below what should appear in Arduino console on successful upload.
+
 ![image](https://user-images.githubusercontent.com/21111325/139258559-530a9084-9d31-48fe-94cb-73c6695dda4b.png)
 
 - Start the Blynk project on the smartphone (select start icon)
@@ -117,8 +118,9 @@ Configure properly the wifi access entering ssid and password to connect to your
 ![image](https://user-images.githubusercontent.com/21111325/139258588-ff71e99a-2140-4841-b09e-b213494214c6.png)
 
 Finally
-```c
+
 {
+
 What described in this post is just a quick and easy way to start with the programming of ESP-8266 when delivered through the very small EAS-01 module. I leave to your imagination to figure out how to use this small board to build  amazing prototyping.
+
 }
-```
