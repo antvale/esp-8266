@@ -117,7 +117,7 @@ Configure properly the wifi access entering ssid and password to connect to your
 
 ![image](https://user-images.githubusercontent.com/21111325/139258588-ff71e99a-2140-4841-b09e-b213494214c6.png)
 
-Finally
+## Finally
 
 {
 
