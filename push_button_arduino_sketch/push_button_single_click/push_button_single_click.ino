@@ -9,8 +9,8 @@
 char auth[] = "f907b792ed0e47bdb675467abaf22b74";
 
 // WiFi access
-char ssid[] = "NETGEAR39";
-char pass[] = "qazplm01";
+char ssid[] = "HUAWEI P10";
+char pass[] = "78b30ca5541f";
 
 // pinout variables, never change
 const int BUTTON1 = 0;
@@ -20,10 +20,9 @@ const int BUTTON2 = 2;
 unsigned long lastDebounceTime = 0;   // the last time the output pin was toggled
 unsigned long debounceDelay = 500;    // the debounce time; increase if the output flickers
 
-int count=0;
 
-// Dry-run to check the connectvity b/w blynk app and esp8266
-// WidgetLED 
+WidgetLED ledRed(V3);
+WidgetLED ledBlue(V4);
 
 void setup() {
   // put your setup code here, to run once:
@@ -32,6 +31,9 @@ void setup() {
 
   pinMode(BUTTON2,INPUT);
   digitalWrite(BUTTON2,HIGH);
+
+  ledRed.off();
+  ledBlue.off();
   
   // Debug console
   Serial.begin(115200);
@@ -58,39 +60,48 @@ void loop() {
   
   
   // single click on button 1
-  if (clickButton(BUTTON1)==0){
+  if (singleClickButton(BUTTON1)){
       Blynk.virtualWrite(V1, "Red Pill Refill");
       Blynk.virtualWrite(V2, "Quantity:5");
+      ledRed.on();
+      ledBlue.off();
+      
     }
 
   // single click on button 2
-  if (clickButton(BUTTON2)==0){
+  if (singleClickButton(BUTTON2)){
       Blynk.virtualWrite(V1, "Blue Pill Refill");
       Blynk.virtualWrite(V2, "Quantity:8");
+      ledBlue.on();
+      ledRed.off();
     }
 
 }
 
-int clickButton(int button_pin){
+boolean singleClickButton(int button_pin){
 
-  int clickMode=-1;
+  boolean clicked=false;
   
   // read the state of the switch into a local variable:
   int buttonState = digitalRead(button_pin);
   
-   //filter out any noise by setting a time buffer
-  if ((millis() - lastDebounceTime) > debounceDelay) {
-    // whatever the reading is at, it's been there for longer than the debounce
-    // delay, so take it as the actual current state:
-     //if the button has been pressed, lets toggle the LED from "off to on" or "on to off"
-    
-    if ( buttonState == LOW) {
-      clickMode=0;
-      lastDebounceTime = millis(); //set the current time
-    }
-    
+  //filter out any noise by setting a time buffer
+  if ((millis() - lastDebounceTime) > debounceDelay && buttonState == LOW) {
+      clicked=true;
+      lastDebounceTime = millis(); //set the current time 
+   }
 
-   }//close if(time buffer)    
+   return clicked;
 
-   return clickMode;
   }
+
+void turnLedOn(WidgetLED led)
+{
+  if (led.getValue()) {
+    led.off();
+    Serial.println("LED: off");
+  } else {
+    led.on();
+    Serial.println("LED: on");
+  }
+}
